@@ -1,0 +1,115 @@
+This file is being read from (2.1.0)
+
+Hi my name is Arihant Jai Hansroy. This is the output from readFileSync, which is reading synchoronously.
+
+
+
+
+
+
+=================================================================================================================================================================================================================================
+
+
+
+
+
+
+
+readFile is asynchronous and for that some expanation from chatGpt
+
+1. Synchronous (readFileSync) vs. Asynchronous (readFile)
+	•	fs.readFileSync() reads the file synchronously, meaning it blocks the execution until the file is fully read.
+	•	fs.readFile() reads the file asynchronously, meaning it does not block execution and requires a callback to handle the result.
+
+2. fs.readFile Missing a Callback
+	•	The second function call (fs.readFile(...)) is missing a callback function. Since fs.readFile is asynchronous, it does not return the file contents directly like fs.readFileSync. Instead, it requires a callback to process the file contents.
+
+--------------------------------------
+Explanation:
+	1.	For fs.readFileSync, it remains the same since it correctly reads the file synchronously.
+	2.	For fs.readFile, a callback function is provided to handle the result:
+	    •	    If there is an error, it is logged using console.error().
+	    •	    If the file is read successfully, its contents are displayed.
+
+
+
+
+
+
+=================================================================================================================================================================================================================================
+
+
+
+
+
+
+Functional Arguments:-
+
+The op parameter in the doOperation function is a callback function. Here’s a breakdown of how it works:
+
+Step-by-Step Execution:
+	1.	Defining Mathematical Functions:
+	•	sum(a, b) → a + b
+	•	multiply(a, b) → a * b
+	•	subtract(a, b) → a - b
+	•	divide(a, b) → a / b
+	2.	doOperation Function:
+
+function doOperation(a, b, op) {
+    return op(a, b);
+}
+
+	•	It takes three parameters: a, b, and op.
+	•	op is expected to be a function.
+	•	The function op is then executed inside doOperation using op(a, b).
+
+	3.	Calling doOperation:
+
+console.log(doOperation(1, 2, sum));
+
+	•	Here, sum (a function reference) is passed as the third argument.
+	•	This means op = sum.
+	•	When doOperation(1, 2, sum) runs, it effectively executes:
+
+return sum(1, 2);  // which returns 1 + 2 = 3
+
+
+	•	The result (3) is logged to the console.
+
+Key Concept: Function as a First-Class Citizen
+	•	In JavaScript, functions can be passed as arguments to other functions.
+	•	When doOperation is called, op is just a placeholder for the actual function (sum, multiply, etc.).
+	•	When op(a, b) is invoked inside doOperation, it executes the function that was passed.
+
+⸻
+
+Example with Different Operations:
+
+console.log(doOperation(3, 4, multiply));  // 3 * 4 = 12
+console.log(doOperation(10, 5, subtract)); // 10 - 5 = 5
+console.log(doOperation(8, 2, divide));    // 8 / 2 = 4
+
+Each function call executes the respective mathematical operation dynamically!
+
+This is a common pattern in higher-order functions where you pass functions as arguments to achieve flexible and reusable code. 🚀
+
+
+
+
+
+
+=================================================================================================================================================================================================================================
+
+readFile simplified...
+
+
+
+The readFile is basically .... 
+
+function/callbackFunction functionName(err, data){      // (......basically saying if there is an error i will give error or if there not erro and data can be read then i will give data)
+    console.log(data);
+}
+
+function readFile(filePath, encoding, function/callbackFunction){
+
+}
