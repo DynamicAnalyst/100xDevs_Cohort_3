@@ -1,0 +1,53 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Todo Test</title>
+  </head>
+  <body id="body">
+    <h3>Todo 1</h3>
+    <h3>Todo 2</h3>
+    <h3>Todo 3</h3>
+    <button onclick="deleteRandomTodo()">Update Todo!</button>
+    <button onclick="deleteTodo()">Delete Todo</button>
+    <button onclick="addNewTodo()">Add New Todo Task</button>
+
+
+    <script>
+
+      function deleteRandomTodo() {
+        const element = document.querySelector("h3");
+        element.innerHTML = "Something New!!";
+      }
+    </script>
+
+
+    <script>
+        // first you get the element
+        // then you get the parent element
+        // then you dod either of 2 ways... either by 'parentNode' or put an 'id' on 'body' and then 'getElementById'
+        // then all you have to do is call 'parentElement' and do 'removeChild' on the 'element' that you want to remove.
+        function deleteTodo(){
+            const element = document.querySelector("h3");
+            const parentElement = element.parentNode;
+            const parentElement2 = document.getElementById("body")
+            parentElement.removeChild(element)
+
+        }
+    </script>
+
+    <script>
+        function addNewTodo(){
+            // first you create a div with createElement
+            //and then you put material inside that div
+            
+            const divElement = document.createElement("div");
+            divElement.innerHTML = "New Todo Added !!!";
+            const parentElement = document.querySelector("body");
+            parentElement.appendChild(divElement);
+        }
+    </script>
+
+
+  </body>
+</html>

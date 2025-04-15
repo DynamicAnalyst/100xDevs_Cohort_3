@@ -1,0 +1,36 @@
+<html>
+
+    <body>
+        <input type="text"></input>
+        <button onclick="addTodo()">Add Todo !!!</button>
+        <button onclick="addTodoWithDeleteButton()">Add Todo with Delete Button</button>
+    </body>
+    
+    <script>
+        function addTodo(){
+            const inputInVariable = document.querySelector("input"); // trying to get 'input' variable in a variable 'inputInVariable'
+            const value = inputInVariable.value // at previous step you get the input element and then in this step you log in input value
+       
+            const newDivEl = document.createElement("div"); // where you put value? Inside a div
+            newDivEl.innerHTML = value; // whats goes inside the div? the value which was inputted.
+        
+            // i created a new dive, now i will append it to the 'body'
+            document.querySelector("body").appendChild(newDivEl);
+        }
+    </script>
+
+    <script>
+        function addTodoWithDeleteButton (){
+            const newInputInVariable = document.querySelector("input");
+            const newValue = newInputInVariable.value;
+
+            const divElementForNewStyle = document.createElement("div");
+            divElementForNewStyle.innerHTML = "<div>" + newValue + "</div><button>Delete ToDo</button>";
+
+            document.querySelector("body").appendChild(divElementForNewStyle);
+        }
+    </script>
+
+
+</html> 
+
