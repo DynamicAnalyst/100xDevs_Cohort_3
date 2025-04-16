@@ -1,0 +1,48 @@
+<body>
+    <input type="text"></input>
+    <button onclick="userInputData()">Add Todo</button>
+    <div id="userInputDataContainer"></div>
+
+
+
+    <script>
+
+        let todoPlaceHolder = [];
+        function callbackPredeterminedLogic({text, id}){        // due to objects, now longer just text but also id
+
+            const spanElement = document.createElement("span");
+            const buttonElement = document.createElement("button");
+            const divElement = document.createElement("div");
+
+            spanElement.innerHTML = text;
+            buttonElement.innerHTML = "delete only requested todo";
+
+
+            buttonElement.onclick = function (){
+                todoPlaceHolder = todoPlaceHolder.filter(todo => todo.id !== id); //SECOND CHANGE:- Instead of checking just against text, it now checks against unique individual objects.
+                renderRefreshedScreen();
+            };
+
+            divElement.appendChild(spanElement);
+            divElement.appendChild(buttonElement);
+
+            return divElement;
+        }
+
+        function userInputData(){
+            const value = document.querySelector("input").value;
+            todoPlaceHolder.push({ id: Date.now(), text: value }); // FIRST CHANGE:- Instead of blind value of just strings...nw storring as uniquie objects
+            renderRefreshedScreen();
+        }
+
+        function renderRefreshedScreen(){
+            const newValue = document.getElementById("userInputDataContainer");
+            newValue.innerHTML = "";
+
+            todoPlaceHolder.forEach(todo => {
+                const todoElement = callbackPredeterminedLogic(todo);
+                newValue.appendChild(todoElement);
+            });
+        }
+    </script>
+</body>

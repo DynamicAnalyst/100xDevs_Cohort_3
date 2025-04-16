@@ -1,0 +1,31 @@
+<body>
+    <input type="text"></input>
+    <button onclick="addNewTodo()">Add New Todo</button>
+
+
+
+    <script> // basically instead of dealing them individually, group children and put inside their respective parents
+        function addNewTodo(){
+            const value = document.querySelector("input").value;
+
+            const spanElement = document.createElement("span");
+            const buttonElement = document.createElement("button");
+
+            spanElement.innerHTML = value;
+            buttonElement.innerHTML = "Delete";
+
+
+            const divElement = document.createElement("div");
+            divElement.appendChild(spanElement);
+            divElement.appendChild(buttonElement);
+
+            document.querySelector("body").appendChild(divElement);
+        }
+// Basically SPAN & DELETE is child which gets put in DIV parent, and the DIV PARENT gets puts in Div Parent's PARENT DIV.
+    </script>
+</body>
+ 
+
+
+
+

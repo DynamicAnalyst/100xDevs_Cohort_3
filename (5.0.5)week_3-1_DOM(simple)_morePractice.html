@@ -1,0 +1,53 @@
+ <!-- Now lets practice new thing from the beginning; but with 'delete' working this time -->
+
+
+ <html>
+    <body>
+        <input type="text"></input>
+        <button onclick="AddTodoFunction()">Add Todo</button>
+        <button onclick="AddTodoWithDeleteButtonFunction()">Add Todo with Delete Button</button>
+    </body>
+
+    <script>
+        function AddTodoFunction(){
+            const insertingValueInVariable = document.querySelector("input"); // trying to get 'input' variable in a variable 'insertingValueIVariable'
+            const value = insertingValueInVariable.value; // // at previous step you get the input element, and then in this step you log in input value
+
+            const newDivElement = document.createElement("div"); // putting value inside 'div'
+            newDivElement.innerHTML = value; // value gets put inside the 'div'
+
+            document.querySelector("body").appendChild(newDivElement);
+        }
+    </script>
+
+
+    <script>
+        let ctr = 1;
+        function deleteTodo(index){                     //this is callfack function
+            const elementThatNeedsDeleting = document.getElementById("todo-" + index);
+            elementThatNeedsDeleting.parentNode.removeChild(elementThatNeedsDeleting);
+        }
+
+
+
+        function AddTodoWithDeleteButtonFunction(){
+            const insertingValueInVariable = document.querySelector("input"); // trying to get 'input' variable in a variable 'insertingValueIVariable'
+            const value = insertingValueInVariable.value; // // at previous step you get the input element, and then in this step I log in input value
+            
+            
+            
+            const currentId = ctr;
+            ctr = ctr + 1;
+
+            
+            
+            
+            const newDivElement = document.createElement("div"); // putting value inside 'div'
+            newDivElement.setAttribute("id", "todo-" + currentId);
+            
+            newDivElement.innerHTML = "<div>" + value + '</div><button onclick="deleteTodo(' + currentId + ')">delete</button>'; // value gets put inside the 'div' // also this is where callback function is being called
+
+            document.querySelector("body").appendChild(newDivElement);
+        }
+    </script>
+ </html>

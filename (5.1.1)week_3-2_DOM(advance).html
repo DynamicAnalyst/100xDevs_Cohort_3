@@ -1,0 +1,67 @@
+<!-- This is chatGpt version of the State + Component version of (5.1.0) for understanding purpose (also check notes for better clarification) |
+ || Practicing this code after this -->
+ 
+<body>
+    <input type="text" />
+    <button onclick="handleAddTodo()">Add Todo</button>
+    <div id="todoContainer"></div>
+
+    <script>
+
+
+        let todos = []; // ✅ This is your STATE
+
+
+
+        function TodoComponent(text) {
+            // ✅ This is your reusable COMPONENT
+            const spanElement = document.createElement("span");
+            const buttonElement = document.createElement("button");
+            const divElement = document.createElement("div");
+
+            spanElement.innerHTML = text;
+            buttonElement.innerHTML = "Delete";
+
+            buttonElement.onclick = function () {
+                todos = todos.filter(todo => todo !== text); // remove from state
+                render(); // re-render UI
+            };
+
+            divElement.appendChild(spanElement);
+            divElement.appendChild(buttonElement);
+
+            return divElement;
+        }
+
+
+
+
+
+
+
+        function handleAddTodo() {
+            const value = document.querySelector("input").value;
+            todos.push(value); // ✅ update state
+            render(); // ✅ re-render DOM
+        }
+
+
+
+
+
+
+
+        function render() {
+            const container = document.getElementById("todoContainer");
+            container.innerHTML = ""; // clear all children
+
+            todos.forEach(todo => {
+                const todoEl = TodoComponent(todo);
+                container.appendChild(todoEl);
+            });
+        }
+
+
+
+    </script>
+</body>
