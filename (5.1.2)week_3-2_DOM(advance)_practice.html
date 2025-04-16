@@ -1,1 +1,66 @@
-incoming in next PUSH
+<!-- WAP in DOM for task manager or todo adding, where user input data for task.. also add a delete button which dletes its associated tasks or user input -->
+
+
+
+<!-- VERY VERY IMPORTANT OUTCOME:- when user clicks "add todo" ....mutliple times...and press DELETE once... all of the same stuff gets deleted.VERY VERY IMPORTANT:- when user clicks "add todo" ....mutliple times...and press DELETE once... all of the same stuff gets deleted. it is deleting based on specific text -->
+
+<!-- it is deleting based on specific text ...DEBUGGIN IT afresh  -->
+
+<body>
+    <input type="text"></input>
+    <button onclick="processTheAddedTodo()">Add Todo</button>
+    <div id="todoStorageContainer"></div>
+
+
+
+<script>
+
+    let todoCity = [];
+
+
+    function callbackTodoMaterials(text){
+
+        const spanElement = document.createElement("span");
+        const buttonElement = document.createElement("button");
+        const divElement = document.createElement("div");
+
+        spanElement.innerHTML = text;
+        buttonElement.innerHTML = "Delete Todo";
+
+        buttonElement.onclick = function () {
+            todoCity = todoCity.filter(todo => todo !== text);
+            render();
+        };
+
+        divElement.appendChild(spanElement);
+        divElement.appendChild(buttonElement);
+
+        return divElement;
+    }
+
+
+
+    function processTheAddedTodo() {
+        const value = document.querySelector("input").value;
+        todoCity.push(value);
+        render();
+    }
+
+
+
+
+
+
+    function render(){
+        const placeHolder = document.getElementById("todoStorageContainer");
+        placeHolder.innerHTML = "";
+
+        todoCity.forEach(todo => {
+            const todoElement = callbackTodoMaterials(todo);
+            placeHolder.appendChild(todoElement);
+        });
+    }
+</script>
+
+
+</body>
